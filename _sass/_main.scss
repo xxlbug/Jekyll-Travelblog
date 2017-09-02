@@ -1,0 +1,206 @@
+@import 'bootstrap';
+@import 'bootstrap-grid';
+@import 'bootstrap-reboot';
+@import 'font-awesome/font-awesome';
+
+body {
+  @include make-container();
+  @extend .bg-dark;
+
+  font: normal 1em 'latolight', helvetica, arial, sans-serif;
+}
+
+@include media-breakpoint-up(sm) {
+  body {
+    font-size: 0.9em;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  body {
+    font-size: 1em;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  body {
+    font-size: 1.1em;
+  }
+}
+
+
+.navigation {
+  @extend .navbar;
+  @extend .navbar-expand-xl;
+  @extend .navbar-dark;
+}
+
+.navigation-brand {
+  @extend .navbar-brand;
+
+  .brand {
+    @extend .fa;
+    @extend .fa-globe;
+  }
+}
+
+.categories {
+  @extend .navbar-nav;
+  @extend .nav-item;
+
+  .category-link {
+    @extend .nav-link;
+  }
+
+  .category-badge {
+    @extend .badge;
+    @extend .badge-secondary;
+  }
+}
+
+.main-row {
+  @include make-row();
+}
+
+.main-content {
+  @include make-col-ready();
+
+  .post {
+    @extend .card;
+    @extend .bg-light;
+    @extend .my-3;
+
+    section {
+      @extend .card-body;
+
+      .article-title {
+        @extend .card-title;
+      }
+
+      .article-subtitle {
+        @extend .card-subtitle;
+        @extend .text-muted;
+        @extend .mb-2;
+      }
+    }
+  }
+
+  .article-text {
+    @extend .card-text;
+
+    .post-figure {
+      @extend .figure;
+
+      .figure-image {
+        @extend .figure-img;
+        @extend .img-fluid;
+        @extend .rounded;
+        @extend .border;
+
+        width: 100%;
+      }
+      
+      .img-overlay {
+        position: relative;
+
+        .figure-image {
+          @extend .figure-img;
+          @extend .img-fluid;
+          @extend .rounded;
+          @extend .border;
+
+          width: 100%;
+        }
+
+        .overlay {
+          position: absolute;
+          @extend .h1;
+          @extend .mx-2;
+          @extend .my-2;
+
+          color: $gray-100;
+          text-shadow: 2px 2px $black;
+        }
+
+        @include media-breakpoint-up(sm) {
+          .overlay {
+            font-size: 1.2em;
+          }
+        }
+
+        @include media-breakpoint-up(md) {
+          h1 {
+            font-size: 0.9em;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          h1 {
+            font-size: 0.9em;
+          }
+        }
+        .top-left {
+          @extend .text-left;
+          top: 0%;
+          left: 0%;
+        }
+
+        .top-center {
+          @extend .text-center;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+
+        .top-right {
+          @extend .text-right;
+          top: 0;
+          right: 0;
+        }
+
+        .middle-left {
+          @extend .text-left;
+          top: 50%;
+          left: 0%;
+        }
+
+
+        .middle-center {
+          @extend .text-center;
+          top: 50%;
+          left: 0;
+          width: 100%;
+        }
+
+        .middle-right {
+          @extend .text-right;
+          top: 50%;
+          right: 0%;
+        }
+
+        .bottom-left {
+          @extend .text-left;
+          bottom: 0%;
+          left: 0%;
+        }
+
+        .bottom-center {
+          @extend .text-center;
+          bottom: 0%;
+          left: 0;
+          width: 100%;
+        }
+
+        .bottom-right {
+          @extend .text-right;
+          bottom: 0%;
+          right: 0%;
+        }
+      }
+
+      .figure-text {
+        @extend .figure-caption;
+      }
+    }
+  }
+}

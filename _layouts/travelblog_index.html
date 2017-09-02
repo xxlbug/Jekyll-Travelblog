@@ -1,0 +1,33 @@
+{% include travelblog_header.html %}
+
+<header class="header">
+  <nav class="navigation">
+    <a class="navigation-brand" href="#"><i class="brand"></i> <span>Steffen's Reiseblog</span></a>
+    {% for category in site.categories %}
+    <nav class="categories">
+      <a class="category-link" href="index.html#{{ category.first }}">{{ category.first }} <span class="category-badge">{{ category.last.size }}</span></a>
+    </nav>
+    {% endfor %}
+  </nav>
+</header>
+
+
+<div class="main-row">
+  <div class="main-content">
+    {% assign post = site.posts.first %}
+    <article class="post" id="{{ post.category }}_{{ post.title }}">
+      <section>
+        <div class="article-title">
+          <strong>{{ post.title }}</strong>
+        </div>
+        <div class="article-subtitle">
+          {{ post.date | date_to_long_string }}
+        </div>
+        <div class="article-text">
+          {{ post.content }}
+        </div>
+      </section>
+    </article>
+  </div>
+</div>
+{% include travelblog_footer.html %}

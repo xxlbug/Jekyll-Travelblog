@@ -1,0 +1,24 @@
+<figure class="post-figure">
+  {% if include.title and include.title != "" and include.title != nil %}
+  <div class="img-overlay">
+    <img src='{{ site.baseurl }}{{ include.file }}' alt='{{ include.title }}' class='figure-image' />
+      {% assign overlay-class='overlay' %}
+      {% if include.position and include.position != "" and include.position != nil %}
+        {% capture overlay-class %}{{ overlay-class }} {{ include.position }}{% endcapture %}
+      {% else %}
+        {% capture overlay-class %}{{ overlay-class }} top-left{% endcapture %}
+      {% endif %}
+      <div class="{{ overlay-class }}">
+        {{ include.title }}
+      </div>
+    </div>
+
+  {% else %}
+  <img src='{{ site.baseurl }}{{ include.file }}' class='figure-image' />
+  {% endif %}
+  {% if include.caption and include.caption != "" and include.caption != nil %}
+  <figcaption class="figure-text">
+    {{ include.caption }}
+  </figcaption>
+  {% endif %}
+</figure>
