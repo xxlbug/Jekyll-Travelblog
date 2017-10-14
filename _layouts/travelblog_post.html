@@ -1,1 +1,11 @@
-{{ post.content }}
+{% include travelblog_header.html %}
+
+<header class="sidebar">
+  {%- include travelblog_navigation.html -%}
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+{% include travelblog_footer.html %}

@@ -1,206 +1,232 @@
-@import 'bootstrap';
-@import 'bootstrap-grid';
-@import 'bootstrap-reboot';
-@import 'font-awesome/font-awesome';
-
+@import "colors.scss";
+@import "fonts.scss";
 body {
-  @include make-container();
-  @extend .bg-dark;
-
-  font: normal 1em 'latolight', helvetica, arial, sans-serif;
+  // taken from hue.css - dark amber style
+  background-image: linear-gradient(-180deg, #15140F 0%, #34312C 97%);
+  color: $text-color;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-areas: 'nav main';
+  grid-template-columns: 160px auto;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
 }
 
-@include media-breakpoint-up(sm) {
-  body {
-    font-size: 0.9em;
-  }
+.sidebar {
+  margin-left: 16px;
+  position: fixed;
 }
 
-@include media-breakpoint-up(md) {
-  body {
-    font-size: 1em;
-  }
+.siteLogo {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 5px;
 }
 
-@include media-breakpoint-up(lg) {
-  body {
-    font-size: 1.1em;
-  }
+.siteLogo a {
+  text-decoration: none;
+  display: grid;
+  justify-items: center;
 }
 
-
-.navigation {
-  @extend .navbar;
-  @extend .navbar-expand-xl;
-  @extend .navbar-dark;
+.siteLogo a img {
+  height: auto;
+  width: 64px;
+  border-radius: 32px;
 }
 
-.navigation-brand {
-  @extend .navbar-brand;
-
-  .brand {
-    @extend .fa;
-    @extend .fa-globe;
-  }
+.siteLogo p {
+  font-weight: bold;
+  color: $site-title;
 }
 
-.categories {
-  @extend .navbar-nav;
-  @extend .nav-item;
-
-  .category-link {
-    @extend .nav-link;
-  }
-
-  .category-badge {
-    @extend .badge;
-    @extend .badge-secondary;
-  }
+.navbar {
+  display: grid;
+  justify-content: center;
+  font-size: 0.9em;
 }
 
-.main-row {
-  @include make-row();
+.slide img {
+  display: block;
 }
 
-.main-content {
-  @include make-col-ready();
+.navCategory {
+  font-weight: bold;
+  display: block;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
 
-  .post {
-    @extend .card;
-    @extend .bg-light;
-    @extend .my-3;
+.navGlobes::before,
+.navGlobes::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #cccccc;
+  border-radius: 50%;
+  background-color: $bg-color;
+}
 
-    section {
-      @extend .card-body;
+.navGlobes::before {
+  top: -8px;
+  left: -8px;
+}
 
-      .article-title {
-        @extend .card-title;
-      }
+.navGlobes::after {
+  bottom: -8px;
+  left: -8px;
+}
 
-      .article-subtitle {
-        @extend .card-subtitle;
-        @extend .text-muted;
-        @extend .mb-2;
-      }
-    }
-  }
+.mainNavigation {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border-left: 2px dashed #cccccc;
+  margin-top: 10px;
+}
 
-  .article-text {
-    @extend .card-text;
+.mainNavigation ul {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  list-style: none;
+  color: $h-color;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
 
-    .post-figure {
-      @extend .figure;
+.mainNavigation ul:last-child {
+  margin-bottom: 0;
+}
 
-      .figure-image {
-        @extend .figure-img;
-        @extend .img-fluid;
-        @extend .rounded;
-        @extend .border;
+.mainNavigation ul::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 100%;
+  border-left: 2px solid #cccccc;
+  position: absolute;
+  left: -2px;
+}
 
-        width: 100%;
-      }
-      
-      .img-overlay {
-        position: relative;
+.mainNavigation ul li {
+  padding-left: 10px;
+}
 
-        .figure-image {
-          @extend .figure-img;
-          @extend .img-fluid;
-          @extend .rounded;
-          @extend .border;
+.mainNavigation ul li a {
+  text-decoration: none;
+}
 
-          width: 100%;
-        }
+.mainNavigation ul li .active {
+  background-color: $link-active-bg;
+  color: $link-active-color;
+  border-radius: 5%;
+  margin: 2px 0;
+  text-align: center;
+  display: block;
+}
 
-        .overlay {
-          position: absolute;
-          @extend .h1;
-          @extend .mx-2;
-          @extend .my-2;
+.mainNavigation ul li .active::before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 1px;
+  border-top: 5px solid $h-color;
+  position: absolute;
+  left: -6px;
+  margin-top: 7px;
+  z-index: 2;
+}
 
-          color: $gray-100;
-          text-shadow: 2px 2px $black;
-        }
+header {
+  grid-area: nav;
+}
 
-        @include media-breakpoint-up(sm) {
-          .overlay {
-            font-size: 1.2em;
-          }
-        }
+main {
+  grid-area: main;
+}
 
-        @include media-breakpoint-up(md) {
-          h1 {
-            font-size: 0.9em;
-          }
-        }
+img {
+  height: auto;
+  width: 100%;
+}
 
-        @include media-breakpoint-up(lg) {
-          h1 {
-            font-size: 0.9em;
-          }
-        }
-        .top-left {
-          @extend .text-left;
-          top: 0%;
-          left: 0%;
-        }
+a {
+  color: $link-color;
+}
 
-        .top-center {
-          @extend .text-center;
-          top: 0;
-          left: 0;
-          width: 100%;
-        }
+a:visited {
+  color: $link-visited-color;
+}
 
-        .top-right {
-          @extend .text-right;
-          top: 0;
-          right: 0;
-        }
+.slide {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
 
-        .middle-left {
-          @extend .text-left;
-          top: 50%;
-          left: 0%;
-        }
+.slideImage {
+  width: 100%;
+  z-index: 1;
+}
 
+.slideTitle {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 2em;
+  font-weight: lighter;
+  width: 50%;
+  color: $h-color;
+}
 
-        .middle-center {
-          @extend .text-center;
-          top: 50%;
-          left: 0;
-          width: 100%;
-        }
+.slideStory {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+}
 
-        .middle-right {
-          @extend .text-right;
-          top: 50%;
-          right: 0%;
-        }
+.slideStory>p {
+  margin: 0;
+  padding: 0;
+}
 
-        .bottom-left {
-          @extend .text-left;
-          bottom: 0%;
-          left: 0%;
-        }
+.storyTitle {
+  font-size: 1.5em;
+  font-weight: bolder;
+  color: $h-color;
+}
 
-        .bottom-center {
-          @extend .text-center;
-          bottom: 0%;
-          left: 0;
-          width: 100%;
-        }
+.left {
+  left: 20px;
+}
 
-        .bottom-right {
-          @extend .text-right;
-          bottom: 0%;
-          right: 0%;
-        }
-      }
+.center {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+}
 
-      .figure-text {
-        @extend .figure-caption;
-      }
-    }
-  }
+.right {
+  right: 20px;
+}
+
+.top {
+  top: 20px;
+}
+
+.middle {
+  margin: auto 0;
+}
+
+.bottom {
+  bottom: 20px;
 }

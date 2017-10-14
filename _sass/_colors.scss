@@ -1,0 +1,8 @@
+$bg-color: rgba(0, 0, 0, 1);
+$text-color: rgba(200, 200, 200, 1);
+$h-color: rgba(255, 200, 73, 1);
+$link-color: rgba(200, 200, 200, .8);
+$link-visited-color: darken($link-color, 20%);
+$link-active-bg: rgba(255, 200, 73, 1);
+$link-active-color: rgba(0, 0, 0, 1);
+$site-title: lighten($text-color, 40%);

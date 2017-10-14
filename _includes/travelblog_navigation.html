@@ -1,0 +1,36 @@
+<div class="siteLogo">
+    <a href="{{ site.baseurl }}/">
+      <img src="{{ site.baseurl }}/assets/img/logo.jpg"/>
+      <p>Steffen's Reiseblog</p>
+    </a>
+</div>
+<div class="navbar">
+    <nav class="mainNavigation">
+        {% assign postsByCategory = site.posts | group_by : "category" %}
+        {% for category in postsByCategory %}
+            <ul>
+                <span class="navGlobes"></span>
+                <span class="navCategory">{{ category.name }}</span>
+                {% for post in category.items %}
+                    <li>
+                        {% comment %}
+                        make the first link in the navigation on the main page (index.html or "/") active
+                        {% endcomment %}
+                        {% if category.name == postsByCategory.first.name and post.title == category.items.first.title and page.url == "/"%}
+                            {% assign class = "class='active'" %}
+                        {% else %}
+                            {% if page.url == post.url %}
+                                {% assign class = "class='active'" %}
+                            {% else %}
+                                {% assign class = "" %}
+                            {% endif %}
+                        {% endif %}
+                        <a href="{{ site.baseurl }}{{ post.url }}" {{ class }}>
+                            {{ post.title | capitalize }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </nav>
+</div>

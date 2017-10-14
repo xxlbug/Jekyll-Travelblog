@@ -2,6 +2,12 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+.vscode
 assets/*
+!assets/css
+_postImages/*
+_posts/*
 _config.yml
+Gemfile
 Gemfile.lock
+_mdwriter.cson
